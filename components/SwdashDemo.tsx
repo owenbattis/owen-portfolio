@@ -35,12 +35,33 @@ const slayMasters = [
 ];
 
 const barterItems = [
-  { name: "Eagle Seed", tier: "T4", type: "SELL", pct: 115, tag: "milestone" as const, buyBar: 30, sellBar: 85 },
-  { name: "Silk Thread", tier: "T2", type: "SELL", pct: 104, tag: "milestone" as const, buyBar: 25, sellBar: 72 },
-  { name: "Skirmish Root", tier: "T0", type: "BUY", pct: 131, tag: null, buyBar: 45, sellBar: 0 },
-  { name: "Iron Shield", tier: "T2", type: "SELL", pct: 51, tag: "poor" as const, buyBar: 15, sellBar: 35 },
-  { name: "Chitin Body", tier: "T7", type: "SELL", pct: 108, tag: "milestone" as const, buyBar: 20, sellBar: 90 },
+  { name: "Eagle Seed", tier: "T4", type: "SELL" as const, pct: 115, tag: "milestone" as const },
+  { name: "Silk Thread", tier: "T2", type: "SELL" as const, pct: 104, tag: "good" as const },
+  { name: "Skirmish Root", tier: "T0", type: "BUY" as const, pct: 131, tag: null },
+  { name: "Iron Shield", tier: "T2", type: "SELL" as const, pct: 51, tag: "poor" as const },
+  { name: "Chitin Body", tier: "T7", type: "SELL" as const, pct: 108, tag: "milestone" as const },
 ];
+
+function barterFavorPosition(modPct: number, type: "buy" | "sell") {
+  const sellFloor = 50, sellCeiling = 110, buyFloor = 90, buyCeiling = 150;
+  let pos: number;
+  if (type === "sell") {
+    pos = ((modPct - sellFloor) / (sellCeiling - sellFloor)) * 100;
+  } else {
+    pos = ((buyCeiling - modPct) / (buyCeiling - buyFloor)) * 100;
+  }
+  return Math.max(0, Math.min(100, pos));
+}
+
+function barterGaugeGradient(type: "buy" | "sell") {
+  const poorPct = type === "sell" ? 60 : 140;
+  const goodPct = type === "sell" ? 95 : 105;
+  const milestonePct = type === "sell" ? 105 : 95;
+  const poorPos = Math.round(barterFavorPosition(poorPct, type));
+  const goodPos = Math.round(barterFavorPosition(goodPct, type));
+  const milestonePos = Math.round(barterFavorPosition(milestonePct, type));
+  return `linear-gradient(to right, #F44336 0%, #F44336 ${poorPos}%, #3a3a3a ${poorPos}%, #3a3a3a ${goodPos}%, #88FF88 ${goodPos}%, #88FF88 ${milestonePos}%, #FFD700 ${milestonePos}%, #FFD700 100%)`;
+}
 
 const barterTopItems = [
   { name: "Iridium Axe", tier: "T7", bought: 86, sold: 0, net: "-298.3k" },
@@ -314,24 +335,20 @@ function BarterTab() {
                   <span className="text-sm font-semibold tabular-nums text-yellow-400">{item.pct}%</span>
                   {item.tag && (
                     <span className={`rounded px-1.5 py-0.5 text-[9px] font-bold uppercase ${
-                      item.tag === "milestone" ? "bg-emerald-900/50 text-emerald-400" : "bg-red-900/50 text-red-400"
+                      item.tag === "milestone" ? "bg-yellow-900/50 text-yellow-400"
+                        : item.tag === "good" ? "bg-emerald-900/50 text-emerald-400"
+                        : "bg-red-900/50 text-red-400"
                     }`}>
-                      {item.tag === "milestone" ? "Milestone" : "Poor Deal"}
+                      {item.tag === "milestone" ? "Milestone" : item.tag === "good" ? "Good Deal" : "Poor Deal"}
                     </span>
                   )}
                 </div>
               </div>
-              <div className="mt-2 space-y-1">
-                <div className="relative h-1.5 rounded-full bg-red-500/70">
-                  {item.buyBar > 0 && (
-                    <div className="absolute top-1/2 h-3 w-0.5 -translate-y-1/2 rounded-full bg-white/90" style={{ left: `${item.buyBar}%` }} />
-                  )}
-                </div>
-                <div className="relative h-1.5 rounded-full bg-emerald-500/70">
-                  {item.sellBar > 0 && (
-                    <div className="absolute top-1/2 h-3 w-0.5 -translate-y-1/2 rounded-full bg-white/90" style={{ left: `${item.sellBar}%` }} />
-                  )}
-                </div>
+              <div className="relative mt-2 h-1.5 rounded-full" style={{ background: barterGaugeGradient(item.type === "BUY" ? "buy" : "sell") }}>
+                <div
+                  className="absolute top-1/2 h-3 w-0.5 -translate-y-1/2 rounded-full bg-white shadow-[0_0_3px_rgba(0,0,0,0.7)]"
+                  style={{ left: `${barterFavorPosition(item.pct, item.type === "BUY" ? "buy" : "sell")}%` }}
+                />
               </div>
             </div>
           ))}
