@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+import { Analytics } from "@vercel/analytics/next";
 import SiteLayout from "@/components/layout/SiteLayout";
 import PageTransition from "@/components/layout/PageTransition";
 
@@ -48,6 +49,7 @@ export default function RootLayout({
         <SiteLayout>
           <PageTransition>{children}</PageTransition>
         </SiteLayout>
+        <Analytics />
       </body>
     </html>
   );
