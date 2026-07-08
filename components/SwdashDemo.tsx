@@ -321,12 +321,16 @@ function BarterTab() {
                   )}
                 </div>
               </div>
-              <div className="mt-2">
-                <div className="h-1.5 rounded-full bg-zinc-800/80">
-                  <div
-                    className={`h-full rounded-full ${item.type === "BUY" ? "bg-emerald-500/80" : "bg-yellow-500/80"}`}
-                    style={{ width: `${item.type === "BUY" ? item.buyBar : item.sellBar}%` }}
-                  />
+              <div className="mt-2 space-y-1">
+                <div className="relative h-1.5 rounded-full bg-red-500/70">
+                  {item.buyBar > 0 && (
+                    <div className="absolute top-1/2 h-3 w-0.5 -translate-y-1/2 rounded-full bg-white/90" style={{ left: `${item.buyBar}%` }} />
+                  )}
+                </div>
+                <div className="relative h-1.5 rounded-full bg-emerald-500/70">
+                  {item.sellBar > 0 && (
+                    <div className="absolute top-1/2 h-3 w-0.5 -translate-y-1/2 rounded-full bg-white/90" style={{ left: `${item.sellBar}%` }} />
+                  )}
                 </div>
               </div>
             </div>
