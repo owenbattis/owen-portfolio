@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import ImageModal from "./ImageModal";
 
 const achievements = [
   {
@@ -120,11 +121,7 @@ export default function GlobusCaseStudy() {
                 <p className="mt-3 text-zinc-400">{image.description}</p>
 
                 <div className="mt-8 overflow-hidden rounded-2xl border border-white/10">
-                  <img
-                    src={image.src}
-                    alt={image.title}
-                    className="h-auto w-full object-contain"
-                  />
+                  <ImageModal src={image.src} alt={image.title} />
                 </div>
               </div>
             ))}
