@@ -22,11 +22,11 @@ export default function OGImage() {
       >
         <div
           style={{
-            fontSize: 18,
+            fontSize: 24,
             letterSpacing: "0.25em",
             color: "#a78bfa",
             textTransform: "uppercase" as const,
-            marginBottom: 28,
+            marginBottom: 32,
             fontWeight: 500,
           }}
         >
@@ -34,21 +34,21 @@ export default function OGImage() {
         </div>
         <div
           style={{
-            fontSize: 76,
+            fontSize: 96,
             fontWeight: 700,
             color: "#ffffff",
             lineHeight: 1.1,
-            marginBottom: 28,
+            marginBottom: 32,
           }}
         >
           Owen Battis
         </div>
         <div
           style={{
-            fontSize: 26,
+            fontSize: 34,
             color: "#a1a1aa",
             lineHeight: 1.5,
-            maxWidth: 700,
+            maxWidth: 800,
             fontWeight: 400,
           }}
         >
