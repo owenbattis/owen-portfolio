@@ -24,9 +24,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Owen Battis | Strategic Marketing Graduate",
     description: "Strategy, creativity, and global perspective.",
+    images: [{ url: "/og.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["/og.png"],
   },
 };
 
