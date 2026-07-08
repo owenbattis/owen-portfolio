@@ -87,8 +87,8 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="flex items-start justify-center md:justify-end"
         >
-          <div className="-mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-4 shadow-2xl shadow-violet-500/5 md:-mt-12">
-            <div className="relative h-[520px] w-[380px] overflow-hidden rounded-2xl">
+          <div className="w-full max-w-sm rounded-3xl border border-white/10 bg-white/[0.03] p-4 shadow-2xl shadow-violet-500/5 md:-mt-12 md:max-w-none md:w-auto">
+            <div className="relative h-[420px] overflow-hidden rounded-2xl md:h-[520px] md:w-[380px]">
               <Image
                 src="/profile.png"
                 alt="Owen Battis"

@@ -15,7 +15,7 @@ export default function CaseStudyPreview() {
           viewport={{ once: true }}
         >
           <Link href="/work/globus" className="group block">
-            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-10 transition hover:border-violet-400/20 hover:bg-violet-500/[0.02] md:p-14">
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-6 transition hover:border-violet-400/20 hover:bg-violet-500/[0.02] md:p-14">
               <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-violet-500/10 blur-3xl opacity-50 transition-opacity group-hover:opacity-100" />
 
               <div className="relative">
@@ -33,7 +33,7 @@ export default function CaseStudyPreview() {
                   financial decision-making, and marketing strategy.
                 </p>
 
-                <div className="mt-10 grid gap-4 md:grid-cols-4">
+                <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
                   {[
                     { value: "#3", label: "Game-to-Date Score" },
                     { value: "#3", label: "Earnings Per Share" },

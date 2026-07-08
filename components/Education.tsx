@@ -143,7 +143,7 @@ export default function Education() {
             </div>
 
             {/* Photo Gallery */}
-            <div className="mt-8 grid grid-cols-3 gap-3">
+            <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3">
               {landscapePhotos.map((photo) => (
                 <div
                   key={photo.src}

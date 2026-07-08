@@ -15,10 +15,22 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Owen Battis | Strategic Marketing Graduate",
   description:
     "Portfolio of Owen Battis showcasing marketing strategy, business projects, and AI automation experience.",
+  openGraph: {
+    title: "Owen Battis | Strategic Marketing Graduate",
+    description:
+      "Strategy, creativity, and global perspective.",
+    images: [{ url: "/og.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Owen Battis | Strategic Marketing Graduate",
+    description: "Strategy, creativity, and global perspective.",
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({
