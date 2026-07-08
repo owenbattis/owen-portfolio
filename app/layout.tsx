@@ -17,20 +17,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://owenbattis.vercel.app"),
   title: "Owen Battis | Strategic Marketing Graduate",
   description:
     "Portfolio of Owen Battis showcasing marketing strategy, business projects, and AI automation experience.",
   openGraph: {
     title: "Owen Battis | Strategic Marketing Graduate",
-    description:
-      "Strategy, creativity, and global perspective.",
-    images: [{ url: "/og.png", width: 1200, height: 630 }],
+    description: "Strategy, creativity, and global perspective.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Owen Battis | Strategic Marketing Graduate",
-    description: "Strategy, creativity, and global perspective.",
-    images: ["/og.png"],
   },
 };
 
