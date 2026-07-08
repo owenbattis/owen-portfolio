@@ -17,21 +17,15 @@ export default function ImageModal({ src, alt }: ImageModalProps) {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="group relative block w-full cursor-zoom-in"
+        className="block w-full cursor-zoom-in"
       >
         <Image
           src={src}
           alt={alt}
           width={1200}
           height={900}
-          className="w-full rounded-xl object-contain transition duration-300 group-hover:scale-[1.02]"
+          className="w-full rounded-xl object-contain transition duration-300 hover:scale-[1.02]"
         />
-
-        <div className="absolute inset-0 flex items-center justify-center rounded-xl bg-black/0 transition group-hover:bg-black/20">
-          <span className="rounded-full border border-white/20 bg-black/60 px-4 py-2 text-sm text-white opacity-0 backdrop-blur-md transition group-hover:opacity-100">
-            Click to expand
-          </span>
-        </div>
       </button>
 
       <AnimatePresence>
